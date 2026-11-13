@@ -1,0 +1,20 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - main
+      - 2201.[0-9]+.x
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+  call_workflow:
+    name: Run Connector Build Workflow
+    uses: ballerina-platform/ballerina-library/.github/workflows/s4hana-build-connector-template.yml@main
+    secrets: inherit
+    with:
+      hana-connector-group: masterdata

@@ -1,0 +1,21 @@
+name: Publish Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      connector:
+        type: choice
+        description: Select Connector
+        required: true
+        options:
+          - api_product_srv
+
+jobs:
+  call_workflow:
+    name: Run Release Workflow
+    if: ${{ github.repository_owner == 'ballerina-platform' }}
+    uses: ballerina-platform/ballerina-library/.github/workflows/s4hana-release-template.yml@main
+    secrets: inherit
+    with:
+      hana-connector-group: masterdata
+      hana-connector-name: ${{ inputs.connector }}

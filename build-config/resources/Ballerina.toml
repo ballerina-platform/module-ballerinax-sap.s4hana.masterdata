@@ -1,0 +1,13 @@
+[package]
+org = "ballerinax"
+name = "@package.name@"
+version = "@toml.version@"
+distribution = "2201.13.0"
+authors = ["Ballerina"]
+keywords = ["Area/ERP & Business Operations", "Business Management/ERP", "Cost/Paid", "Vendor/SAP", "S/4HANA", "Master Data"]
+repository = "https://github.com/ballerina-platform/module-ballerinax-sap.s4hana.masterdata"
+icon = "../icon.png"
+license = ["Apache-2.0"]
+
+[build-options]
+observabilityIncluded = true

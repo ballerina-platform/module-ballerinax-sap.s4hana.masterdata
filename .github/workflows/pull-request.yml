@@ -1,0 +1,15 @@
+name: PR Build
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.run_id }}
+  cancel-in-progress: true
+
+on: pull_request
+
+jobs:
+  call_workflow:
+    name: Run PR Build Workflow
+    uses: ballerina-platform/ballerina-library/.github/workflows/s4hana-pr-template.yml@main
+    secrets: inherit
+    with:
+      hana-connector-group: masterdata
